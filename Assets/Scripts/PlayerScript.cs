@@ -6,6 +6,8 @@ public class PlayerScript : MonoBehaviour
 {
     public GridManager gridManager;
 
+    private Vector3 currentPos;
+    private Vector3 previousPos;
     private float offset;
 
     void Start()
@@ -22,6 +24,7 @@ public class PlayerScript : MonoBehaviour
 
     void Movement()
     {
+        previousPos = transform.position;
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             transform.Translate(Vector3.left * offset);
@@ -42,22 +45,13 @@ public class PlayerScript : MonoBehaviour
 
     void OutOfBounds()
     {
-        if (transform.position.x <= -gridManager.columnOffset)
+        RaycastHit hit;
+        var down = transform.TransformDirection(Vector3.down);
+        
+        if (!Physics.Raycast(transform.position, down, out hit, 1.5f))
         {
-            transform.position = new Vector3(-gridManager.columnOffset, 1f, transform.position.z);
-        }
-        else if (transform.position.x >= gridManager.columnOffset)
-        {
-            transform.position = new Vector3(gridManager.columnOffset, 1f, transform.position.z);
-        }
-
-        if (transform.position.z <= -gridManager.rowOffset)
-        {
-            transform.position = new Vector3(transform.position.x, 1f, -gridManager.rowOffset);
-        }
-        else if (transform.position.z >= gridManager.rowOffset)
-        {
-            transform.position = new Vector3(transform.position.x, 1f, gridManager.rowOffset);
+            currentPos = previousPos;
+            transform.position = currentPos;
         }
     }
 }

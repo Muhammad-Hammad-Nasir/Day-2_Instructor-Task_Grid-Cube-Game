@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class GridManager : MonoBehaviour
 {
-    private TextMesh[] birdNames = new TextMesh[10];
     public GameObject player;
     public GameObject cube;
     public GameObject[,] gridCubes;
@@ -28,15 +26,15 @@ public class GridManager : MonoBehaviour
         myBirds.Add("Crow");
         myBirds.Add("Kite");
         myBirds.Add("Eagle");
-        //myBirds.Add("Swan");
-        //myBirds.Add("Bat");
-        //myBirds.Add("Ostrich");
-        //myBirds.Add("Dove");
-        //myBirds.Add("Crane");
-        //myBirds.Add("Duck");
-        //myBirds.Add("Robin");
-        //myBirds.Add("Flamingo");
-        //myBirds.Add("Cuckoo");
+        myBirds.Add("Swan");
+        myBirds.Add("Bat");
+        myBirds.Add("Ostrich");
+        myBirds.Add("Dove");
+        myBirds.Add("Crane");
+        myBirds.Add("Duck");
+        myBirds.Add("Robin");
+        myBirds.Add("Flamingo");
+        myBirds.Add("Cuckoo");
 
         gridCubes = new GameObject[columns, rows];
         columnOffset = columns - 1;
@@ -47,7 +45,7 @@ public class GridManager : MonoBehaviour
             for (int j = 0; j < gridCubes.GetLength(1); j++)
             {
                 gridCubes[i, j] = (GameObject)Instantiate(cube, new Vector3((i * gapOffset) - columnOffset, 0, (j * gapOffset) - rowOffset), cube.transform.rotation);
-                //gridCubes[i, j].GetComponentInChildren<TextMeshProUGUI>().text = myBirds[Random.Range(0, myBirds.Count)];
+                gridCubes[i, j].GetComponentInChildren<TextMesh>().text = myBirds[Random.Range(0, myBirds.Count)];
             }
         }
 
