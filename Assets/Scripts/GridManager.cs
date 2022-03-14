@@ -13,30 +13,36 @@ public class GridManager : MonoBehaviour
     public float columnOffset;
     public float rowOffset;
 
+    private Dictionary<int, string> birdsList = new Dictionary<int, string>();
     private int l = 0;
 
     void Start()
     {
-        Dictionary<int, string> myBirds = new Dictionary<int, string>();
-        myBirds.Add(0, "Pigeon");
-        myBirds.Add(1, "Peacock");
-        myBirds.Add(2, "Parrot");
-        myBirds.Add(3, "Sparrow");
-        myBirds.Add(4, "Quail");
-        myBirds.Add(5, "Owl");
-        myBirds.Add(6, "Swallow");
-        myBirds.Add(7, "Crow");
-        myBirds.Add(8, "Kite");
-        myBirds.Add(9, "Eagle");
-        myBirds.Add(10, "Swan");
-        myBirds.Add(11, "Bat");
-        myBirds.Add(12, "Ostrich");
-        myBirds.Add(13, "Dove");
-        myBirds.Add(14, "Crane");
-        myBirds.Add(15, "Duck");
-        myBirds.Add(16, "Robin");
-        myBirds.Add(17, "Flamingo");
-        myBirds.Add(18, "Cuckoo");
+        List<string> myBirds = new List<string>();
+        myBirds.Add("Pigeon");
+        myBirds.Add("Peacock");
+        myBirds.Add("Parrot");
+        myBirds.Add("Sparrow");
+        myBirds.Add("Quail");
+        myBirds.Add("Owl");
+        myBirds.Add("Swallow");
+        myBirds.Add("Crow");
+        myBirds.Add("Kite");
+        myBirds.Add("Eagle");
+        myBirds.Add("Swan");
+        myBirds.Add("Bat");
+        myBirds.Add("Ostrich");
+        myBirds.Add("Dove");
+        myBirds.Add("Crane");
+        myBirds.Add("Duck");
+        myBirds.Add("Robin");
+        myBirds.Add("Flamingo");
+        myBirds.Add("Cuckoo");
+
+        for(int k = 0; k < myBirds.Count; k++)
+        {
+            birdsList.Add(k, myBirds[k]);
+        }
 
         gridCubes = new GameObject[columns, rows];
         columnOffset = columns - 1;
@@ -47,7 +53,7 @@ public class GridManager : MonoBehaviour
             for (int j = 0; j < gridCubes.GetLength(1); j++)
             {
                 gridCubes[i, j] = (GameObject)Instantiate(cube, new Vector3((i * gapOffset) - columnOffset, 0, (j * gapOffset) - rowOffset), cube.transform.rotation);
-                gridCubes[i, j].GetComponentInChildren<TextMesh>().text = myBirds[l];
+                gridCubes[i, j].GetComponentInChildren<TextMesh>().text = birdsList[l];
                 l++;
             }
         }

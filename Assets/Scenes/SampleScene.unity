@@ -154,8 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1024359540}
   cube: {fileID: 6573196007962180718, guid: d4e498b3307660a459f7133be535e407, type: 3}
-  rows: 5
-  columns: 5
+  rows: 4
+  columns: 4
   gapOffset: 2
   columnOffset: 0
   rowOffset: 0
@@ -319,7 +319,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

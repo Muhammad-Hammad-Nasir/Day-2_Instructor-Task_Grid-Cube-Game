@@ -48,7 +48,7 @@ public class PlayerScript : MonoBehaviour
         RaycastHit hit;
         var down = transform.TransformDirection(Vector3.down);
         
-        if (!Physics.Raycast(transform.position, down, out hit, 1.5f))
+        if (!Physics.Raycast(transform.position, down, out hit, 1f))
         {
             currentPos = previousPos;
             transform.position = currentPos;
