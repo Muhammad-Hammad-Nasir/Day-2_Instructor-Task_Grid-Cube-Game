@@ -50,8 +50,7 @@ public class PlayerScript : MonoBehaviour
         
         if (!Physics.Raycast(transform.position, down, out hit, 1f))
         {
-            currentPos = previousPos;
-            transform.position = currentPos;
+            transform.position = previousPos;
         }
     }
 }
